@@ -40,7 +40,7 @@ app.get("/", function(req, res) {
   //app.post("boardcontrol");
   //router.post("boardcontrol", boardcontrol.poster);
 });
-
+//
 app.listen(8080);
 
 // GET post listing page
