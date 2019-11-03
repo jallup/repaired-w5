@@ -15,15 +15,7 @@ if (document.readyState !== "loading") {
   });
 }
 // Mongo DB
-/*const MongoClient = require("mongodb").MongoClient;
-const uri =
-  "mongodb+srv://jallu:saab9000aerohot@cluster0-klm10.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("game").collection("playBoard");
-  collection.insert({ name: "John Wick 2" });
-  client.close();
-});*/
+
 // Other variables and constants
 
 var playBoard; // Will be an array containing all the moves players has made
@@ -121,3 +113,13 @@ function replayFunction() {
     .getElementById("replay_button")
     .addEventListener("click", startGame, false);
 }
+
+/*const MongoClient = require("mongodb").MongoClient;
+const uri =
+  "mongodb+srv://jallu:saab9000aerohot@cluster0-klm10.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  //const collection = client.db("game").collection("playBoard");
+  //collection.insert({ name: "John Wick 2" });
+  //client.close();
+});*/
