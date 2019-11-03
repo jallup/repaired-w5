@@ -16,6 +16,8 @@ if (document.readyState !== "loading") {
 }
 // Mongo DB
 
+var Poster = require("../controllers/playController");
+
 // Other variables and constants
 
 var playBoard; // Will be an array containing all the moves players has made
@@ -47,6 +49,7 @@ function initializeCode() {
   //startGame();
   getGameStatus();
   replayFunction();
+  Poster.create();
 }
 // This function will start the game, makes playBoard array for moves and then initializes click action to every cell
 

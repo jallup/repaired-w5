@@ -2,6 +2,8 @@ const express = require("express");
 
 const app = express();
 
+// var Post = require("../controllers/playController");
+
 //var router = express.Router();
 
 //var boardcontrol = require("../src/boardcontrol");
@@ -34,3 +36,5 @@ app.get("/", function(req, res) {
 });
 //
 app.listen(8080);
+
+exports.module = app;
