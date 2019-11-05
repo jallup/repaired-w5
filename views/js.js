@@ -1,6 +1,4 @@
 //import "./styles.css";
-// const ttt contains cells of table board
-//var mongoose = require("mongoose");
 // This is straight from course material, checks that document is loaded before any game functions are called
 if (document.readyState !== "loading") {
   // Document ready, executing
@@ -10,17 +8,16 @@ if (document.readyState !== "loading") {
 } else {
   document.addEventListener("DOMContentLoaded", function() {
     // Document was not ready, executing when loaded
-    console.log("Document ready, executing after a wait");
+    console.log("Document ready, executing after a wait1");
     initializeCode();
   });
 }
-// Mongo DB
-
-var Poster = require("../controllers/playController");
-
+//var train = require("train.js");
 // Other variables and constants
 
 var playBoard; // Will be an array containing all the moves players has made
+
+//exports.playBoard = playBoard;
 
 const one = "o";
 
@@ -49,7 +46,7 @@ function initializeCode() {
   //startGame();
   getGameStatus();
   replayFunction();
-  Poster.create();
+  //train();
 }
 // This function will start the game, makes playBoard array for moves and then initializes click action to every cell
 
@@ -126,3 +123,9 @@ client.connect(err => {
   //collection.insert({ name: "John Wick 2" });
   //client.close();
 });*/
+
+function exporter() {
+  console.log(playBoard);
+}
+
+window.exporter = exporter;

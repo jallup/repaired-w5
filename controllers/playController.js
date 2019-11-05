@@ -20,10 +20,11 @@ exports.create = function(req, res, next) {
   //sanitizeBody("*")
   //  .trim()
   //  .escape();
-
   // Create a post object
   // Improve: Use promises with .then()
-  var post = new Post({ board: "John Wick 2" });
+  var post = new Post({ playBoard: "John Wick 3" });
+
+  console.log("Y");
 
   post.save(function(err) {
     if (err) {

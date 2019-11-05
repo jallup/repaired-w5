@@ -1,6 +1,12 @@
 const express = require("express");
 
 const app = express();
+var path = require("path");
+
+var Post = require("../controllers/playController");
+
+var indexRouter = require("../routers/index");
+var playRouter = require("../routers/playRouter");
 
 // var Post = require("../controllers/playController");
 
@@ -8,7 +14,8 @@ const app = express();
 
 //var boardcontrol = require("../src/boardcontrol");
 
-app.set("views", "./views");
+app.set("views", path.join(__dirname, "../views/"));
+//pp.set("views", "./views");
 
 app.set("view engine", "pug");
 
@@ -22,18 +29,25 @@ var mongoose = require("mongoose");
 var dev_db_url =
   "mongodb+srv://jallu:saab9000aerohot@cluster0-klm10.mongodb.net/test?retryWrites=true&w=majority";
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
-mongoose.connect(mongoDB);
+mongoose.connect(mongoDB, { dbName: "game" });
 mongoose.Promise = Promise;
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
-app.get("/", function(req, res) {
+app.use(express.static(path.join(__dirname, "public")));
+//app.post("js");
+app.use("/", indexRouter);
+app.use("/play", playRouter);
+
+//let db = client.db("game");
+/*app.get("/", function(req, res) {
   res.render("index", { head: "Hey" });
-  app.post("js");
+  res.post("../src/js");
+  Post.create();
   //db.save({ name: "John Wick" });
   //app.post("boardcontrol");
   //router.post("boardcontrol", boardcontrol.poster);
-});
+});*/
 //
 app.listen(8080);
 
