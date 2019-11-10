@@ -1,4 +1,5 @@
 //import "./styles.css";
+
 // This is straight from course material, checks that document is loaded before any game functions are called
 if (document.readyState !== "loading") {
   // Document ready, executing
@@ -8,16 +9,13 @@ if (document.readyState !== "loading") {
 } else {
   document.addEventListener("DOMContentLoaded", function() {
     // Document was not ready, executing when loaded
-    console.log("Document ready, executing after a wait1");
+    console.log("Document ready, executing after a wait....");
     initializeCode();
   });
 }
-//var train = require("train.js");
-// Other variables and constants
 
-var playBoard; // Will be an array containing all the moves players has made
-
-//exports.playBoard = playBoard;
+// Will be an array containing all the moves players has made
+var playBoard;
 
 const one = "o";
 
@@ -79,6 +77,7 @@ function clickCell(cells) {
 function turn(cellsId, player) {
   playBoard[cellsId] = player;
   //--> playBoard to mongoDB
+  //Taxi.taxi("John Wick to Taxi");
   document.getElementById(cellsId).innerText = player;
   gameOver(player);
   //index.mongo(playBoard);
@@ -114,18 +113,8 @@ function replayFunction() {
     .addEventListener("click", startGame, false);
 }
 
-/*const MongoClient = require("mongodb").MongoClient;
-const uri =
-  "mongodb+srv://jallu:saab9000aerohot@cluster0-klm10.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  //const collection = client.db("game").collection("playBoard");
-  //collection.insert({ name: "John Wick 2" });
-  //client.close();
-});*/
-
-function exporter() {
-  console.log(playBoard);
+function foo() {
+  return playBoard;
 }
 
-window.exporter = exporter;
+window.foo = foo;

@@ -1,26 +1,16 @@
 const express = require("express");
 
 const app = express();
+
 var path = require("path");
 
-var Post = require("../controllers/playController");
-
+// Router for index
 var indexRouter = require("../routers/index");
+
+// Router for the "game engine"
 var playRouter = require("../routers/playRouter");
 
-// var Post = require("../controllers/playController");
-
-//var router = express.Router();
-
-//var boardcontrol = require("../src/boardcontrol");
-
-app.set("views", path.join(__dirname, "../views/"));
-//pp.set("views", "./views");
-
-app.set("view engine", "pug");
-
-app.use(express.static("views"));
-
+// MongoDB connection
 var Promise = require("bluebird");
 
 var mongoose = require("mongoose");
@@ -34,21 +24,22 @@ mongoose.Promise = Promise;
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
-app.use(express.static(path.join(__dirname, "public")));
+app.set("views", path.join(__dirname, "../views/"));
+//pp.set("views", "./views");
+
+// Set pug as view engine
+app.set("view engine", "pug");
+
+// Serve static file from these directories
+app.use(express.static("views"));
+app.use(express.static("src"));
+
 //app.post("js");
 app.use("/", indexRouter);
 app.use("/play", playRouter);
 
-//let db = client.db("game");
-/*app.get("/", function(req, res) {
-  res.render("index", { head: "Hey" });
-  res.post("../src/js");
-  Post.create();
-  //db.save({ name: "John Wick" });
-  //app.post("boardcontrol");
-  //router.post("boardcontrol", boardcontrol.poster);
-});*/
-//
 app.listen(8080);
 
-exports.module = app;
+function transfer(board) {
+  console.log(board);
+}
